@@ -18,7 +18,7 @@ namespace DotNetOutdated
             foreach (var package in dependencies)
             {
                 Dependency dependency = Extract(package);
-                
+
                 if (dependency != null)
                 {
                     all.Add(dependency);
@@ -30,7 +30,7 @@ namespace DotNetOutdated
             foreach (var package in dependencies)
             {
                 Dependency dependency = Extract(package);
-                
+
                 if (dependency != null)
                 {
                     all.Add(dependency);
@@ -47,7 +47,14 @@ namespace DotNetOutdated
 
             if (name != null && version != null)
             {
-                return new Dependency(name, version);
+                try
+                {
+                    return new Dependency(name, version);
+                }
+                catch
+                {
+                    return null;
+                }
             }
 
             return null;
