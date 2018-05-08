@@ -10,7 +10,8 @@ namespace DotNetOutdated
     {
         public static void Main(string[] args)
         {
-            string firstProjectFile = Directory.EnumerateFiles("./").FirstOrDefault(x => Path.GetExtension(x) == ".csproj");
+            var projectFiles = new HashSet<string>() { ".csproj", ".fsproj" };
+            string firstProjectFile = Directory.EnumerateFiles("./").FirstOrDefault(x => projectFiles.Contains(Path.GetExtension(x)));
 
             if (firstProjectFile == null)
             {
